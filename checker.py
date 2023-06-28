@@ -26,11 +26,11 @@ class ProxyChecker(QThread):
 
     def checker(self, proxy):
         url = 'https://www.example.com'
-        with httpx.Client() as client, open('valid.txt', 'a') as valid_file, open('invalid.txt', 'a') as invalid_file:
+        with httpx.Client(http2=True, timeout=5, ) as client, open('valid.txt', 'a') as valid_file, open('invalid.txt', 'a') as invalid_file:
             try:
                 # self.update_log.emit(f'[*] Проверка прокси: {proxy}')
                 client.proxies = {'https': f'https://{proxy}, http://{proxy}'}
-                response = client.get(url, timeout=5)
+                response = client.get(url)
                 if response.status_code == 200:
 
                     ip = proxy.split('@')[-1].split(':')[0]
@@ -40,9 +40,7 @@ class ProxyChecker(QThread):
                         geo_data = geo_response.json()
                         valid_file.write(f"{proxy}\n")
                         self.update_log.emit(
-                            str(
-                                f"{ip} | {geo_data['country']} | {geo_data['city']} | {geo_data['isp']}"
-                            )
+                            str("|{:^21}|{:^26}|{:^26}|{:^32}|".format(ip, geo_data['country'][:24], geo_data['city'][:24], geo_data['isp'][:30]))
                         )
                 else:
                     ip = proxy.split('@')[-1].split(':')[0]
