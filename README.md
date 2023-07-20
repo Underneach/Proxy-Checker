@@ -10,4 +10,4 @@
     UI --- PyQT5
     Net --- httpx + sosksio
 
-Собранный EXE (Клик)
+  Собранный EXE - https://github.com/Underneach/Proxy-Checker/releases/tag/1.1
