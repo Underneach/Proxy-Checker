@@ -7,7 +7,14 @@
 * Мультипоточность (Асинхронный пул потоков ThreadPoolExecutor)
 * Запись валидных проксей в "valid.txt" и невалидных в "invalid.txt"
 
+
+
     UI --- PyQT5
+  
     Net --- httpx + sosksio
+
+
+
+
 
   Собранный EXE - https://github.com/Underneach/Proxy-Checker/releases/tag/1.1
