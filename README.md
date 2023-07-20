@@ -4,6 +4,7 @@
 ### HTTP/Socks прокси чекер с многопоточной реализацией
 
 UI - PyQT5
+
 Net - httpx + sosksio
 
 * Работает с socks4/5 и http/s прокси
