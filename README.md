@@ -3,18 +3,13 @@
 
 ### HTTP/Socks прокси чекер с многопоточной реализацией
 
-* Работает с socks4/5 и http/s прокси
-* Мультипоточность (Асинхронный пул потоков ThreadPoolExecutor)
-* Запись валидных проксей в "valid.txt" и невалидных в "invalid.txt"
+    * Работает с socks4/5 и http/s прокси
+    * Мультипоточность (Асинхронный пул потоков ThreadPoolExecutor)
+    * Запись валидных проксей в "valid.txt" и невалидных в "invalid.txt"
 
+### Стек:
+    UI - PyQT5
+    Net - httpx + sosksio
 
-
-    UI --- PyQT5
-  
-    Net --- httpx + sosksio
-
-
-
-
-
-  Собранный EXE - https://github.com/Underneach/Proxy-Checker/releases/tag/1.1
+### Собранный EXE
+https://github.com/Underneach/Proxy-Checker/releases/
