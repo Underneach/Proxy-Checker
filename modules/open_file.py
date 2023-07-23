@@ -16,6 +16,8 @@ def open_file_func(self):
                 line = line.strip()  # Удалить лишние пробелы и символы новой строки
                 self.parsed_proxy.append(line)  # Добавить обработанную строку
             self.all_proxy.setText(f"{len(self.parsed_proxy)}")
+            self.unchecked_proxy.setText(f"{len(self.parsed_proxy)}")
+            self.unchecked_proxy_stat = len(self.parsed_proxy)
         else:
             return
     except Exception as message:

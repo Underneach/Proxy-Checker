@@ -1,1 +1,1 @@
-pyinstaller --onefile --noconsole --noconfirm --noupx --clean main.py
+pyinstaller --clean --onefile --noconsole --noconfirm --add-data "modules/app.ui;modules" --add-data "modules/icon.ico;modules" --icon "modules/icon.ico" main.py
