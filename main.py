@@ -4,8 +4,10 @@ import sys
 from PyQt5 import QtWidgets, uic, QtGui
 
 from modules.open_file import open_file_func
-from modules.start import Start
 from modules.update_stat import Update_stat
+from modules.set_stat import Set_Stat
+from modules.finished import Finished
+from modules.start import Start
 
 
 def resource_path(relative_path):
@@ -38,16 +40,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         Update_stat(self, info)
 
     def set_stat(self, valid_proxy_stat, invalid_proxy_stat, checked_proxy_stat, unchecked_proxy_stat):
-        self.valid_proxy.setText(str(valid_proxy_stat))
-        self.invalid_proxy.setText(str(invalid_proxy_stat))
-        self.checked_proxy.setText(str(checked_proxy_stat))
-        self.unchecked_proxy.setText(str(unchecked_proxy_stat))
+        Set_Stat(self, valid_proxy_stat, invalid_proxy_stat, checked_proxy_stat, unchecked_proxy_stat)
 
     def finished(self):
-        self.plainTextEdit.appendPlainText('\n\n\nПроверка прокси завершена!')
-        self.Start.setEnabled(True)
-        self.Start.setText('Начать')
-        self.plainTextEdit.appendPlainText('\n\nРезультаты проверки сохранены в файлы valid.txt и invalid.txt')
+        Finished(self)
 
 
 if __name__ == '__main__':

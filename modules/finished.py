@@ -1,0 +1,10 @@
+def Finished(self):
+    self.plainTextEdit.appendPlainText('\n\n\nПроверка прокси завершена!')
+    self.Start.setEnabled(True)
+    self.spinBox_2.setEnabled(True)
+    self.comboBox.setEnabled(True)
+    self.Select_proxy_button.setEnabled(True)
+    self.Textline.setEnabled(True)
+    self.all_proxy.setEnabled(True)
+    self.Start.setText('Начать')
+    self.plainTextEdit.appendPlainText('\n\nРезультаты проверки сохранены в файлы valid.txt и invalid.txt')
