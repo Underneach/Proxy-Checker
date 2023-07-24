@@ -1,5 +1,7 @@
 # Proxy-Checker
-![image](https://github.com/Underneach/Proxy-Checker/assets/137613889/46e90b39-b0f0-4316-b462-f5f8d3dcc45c)
+
+![image](https://github.com/Underneach/Proxy-Checker/assets/137613889/cc51b568-839d-4fda-b81a-d984086caca7)
+
 
 ### HTTP/Socks прокси чекер с многопоточной реализацией
 
