@@ -11,13 +11,15 @@
     * Запись валидных проксей в "valid.txt" и невалидных в "invalid.txt"
 
 ### Потоки
-    12 Ядер - 1000 потоков
+    12 Ядер - 800 потоков
     8 Ядер - 600 потоков
     4 Ядра - 300 потоков
 
 ### Стек:
-    UI - PyQT5
+    UI - PySide6
     Net - httpx + sosksio
+    Build - nuitka
+    
 
 ### Собранный EXE
 https://github.com/Underneach/Proxy-Checker/releases/
