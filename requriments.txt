@@ -1,3 +1,5 @@
-PyQt5
+PySide6
 httpx
 socksio
+nuitka
+pyinstaller

@@ -1,13 +1,15 @@
 import os
 import sys
 
-from PyQt5 import QtWidgets, uic, QtGui
+from PySide6 import QtGui
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtWidgets import QApplication, QMainWindow
 
-from modules.open_file import open_file_func
-from modules.update_stat import Update_stat
-from modules.set_stat import Set_Stat
 from modules.finished import Finished
+from modules.open_file import open_file_func
+from modules.set_stat import Set_Stat
 from modules.start import Start
+from modules.update_stat import Update_stat
 
 
 def resource_path(relative_path):
@@ -16,16 +18,18 @@ def resource_path(relative_path):
     return os.path.join(os.path.abspath("."), relative_path)
 
 
-class Ui_MainWindow(QtWidgets.QMainWindow):
+class Checker(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi(resource_path("modules/app.ui"), self)
+
+        self.ui = QUiLoader().load(resource_path("modules/app.ui"), self)
         self.setWindowIcon(QtGui.QIcon(resource_path('modules/icon.ico')))
 
-        self.comboBox.addItems(['http', 'socks4', 'socks5'])
+        self.ui.comboBox.addItems(['http', 'socks4', 'socks5'])
+        self.ui.Select_proxy_button.clicked.connect(self.open_file)
+        self.ui.Start.clicked.connect(self.start)
 
-        self.Select_proxy_button.clicked.connect(self.open_file)
-        self.Start.clicked.connect(self.start)
+        self.ui.show()
 
     def open_file(self):
         open_file_func(self)
@@ -34,7 +38,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         Start(self)
 
     def update_log(self, data):
-        self.plainTextEdit.appendPlainText(data)
+        self.ui.plainTextEdit.appendPlainText(data)
 
     def update_stat(self, info):
         Update_stat(self, info)
@@ -46,8 +50,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         Finished(self)
 
 
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    window = Ui_MainWindow()
-    window.show()
-    app.exec_()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = Checker()
+    sys.exit(app.exec())

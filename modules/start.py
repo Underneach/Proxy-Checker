@@ -2,15 +2,15 @@ from modules.checker import ProxyChecker
 
 
 def Start(self):
-    if self.Textline.text() == '':
-        self.plainTextEdit.appendPlainText('Выберите файл с прокси!')
+    if self.ui.Textline.text() == '':
+        self.ui.plainTextEdit.appendPlainText('Выберите файл с прокси!')
         return
 
     parsed_proxy = self.parsed_proxy
-    threads = self.spinBox_2.value()
-    protocol = str(self.comboBox.currentText())
+    threads = self.ui.spinBox_2.value()
+    protocol = str(self.ui.comboBox.currentText())
 
-    self.plainTextEdit.appendPlainText('Начинаю проверку прокси...\n')
+    self.ui.plainTextEdit.appendPlainText('Начинаю проверку прокси...\n')
 
     self.valid_proxy_stat = 0
     self.invalid_proxy_stat = 0
@@ -22,10 +22,10 @@ def Start(self):
     self.checker.finished_signal.connect(self.finished)
     self.checker.start()
 
-    self.Start.setEnabled(False)
-    self.spinBox_2.setEnabled(False)
-    self.comboBox.setEnabled(False)
-    self.Select_proxy_button.setEnabled(False)
-    self.Textline.setEnabled(False)
-    self.all_proxy.setEnabled(False)
-    self.Start.setText('В работе...')
+    self.ui.Start.setEnabled(False)
+    self.ui.spinBox_2.setEnabled(False)
+    self.ui.comboBox.setEnabled(False)
+    self.ui.Select_proxy_button.setEnabled(False)
+    self.ui.Textline.setEnabled(False)
+    self.ui.all_proxy.setEnabled(False)
+    self.ui.Start.setText('В работе...')
