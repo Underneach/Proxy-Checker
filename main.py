@@ -1,8 +1,7 @@
 import os
 import sys
 
-from PySide6 import QtGui
-from PySide6.QtUiTools import QUiLoader
+from PySide6 import QtGui, QtUiTools, QtWidgets
 from PySide6.QtWidgets import QApplication, QMainWindow
 
 from modules.finished import Finished
@@ -13,16 +12,19 @@ from modules.update_stat import Update_stat
 
 
 def resource_path(relative_path):
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, relative_path)
-    return os.path.join(os.path.abspath("."), relative_path)
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+
+    return os.path.join(base_path, relative_path)
 
 
-class Checker(QMainWindow):
+class Checker(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.ui = QUiLoader().load(resource_path("modules/app.ui"), self)
+        self.ui = QtUiTools.QUiLoader().load(resource_path("modules/app.ui"), self)
         self.setWindowIcon(QtGui.QIcon(resource_path('modules/icon.ico')))
 
         self.ui.comboBox.addItems(['http', 'socks4', 'socks5'])
